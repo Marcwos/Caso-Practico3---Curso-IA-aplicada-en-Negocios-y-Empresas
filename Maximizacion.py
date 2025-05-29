@@ -41,16 +41,24 @@ for n in range(0, N):
     reward_rs =X[n, strategy_rs]
     total_reward_rs += reward_rs
     #Muestreo de Thompson 
-    strategy_ts = 0 ###
-    max_random = 0  ###
+    strategy_ts = 0 
+    max_random = 0  
     for i in range(0, d):
-        random_beta = random.betavariate(number_of_rewards_1[i] + 1, number_of_rewards_0[i] + 1)
+        random_beta = random.betavariate(number_of_rewards_1[i] + 1, 
+                                         number_of_rewards_0[i] + 1)
 
-        if random_beta > max_random: ###
-            max_random = random_beta ###
-            strategy_ts = i ###
+        if random_beta > max_random: 
+            max_random = random_beta 
+            strategy_ts = i
+    reward_ts = X[n, strategy_ts] ###
+    if reward_ts == 1: ###
+        number_of_rewards_1[strategies_selected_ts] += 1 ###
+    else: ###
+        number_of_rewards_0[strategies_selected_ts] += 1 ###
+    strategies_selected_ts.append(strategy_ts)
+    total_reward_ts += reward_ts
 
-
+    
 plt.imshow(X, aspect='auto', cmap='coolwarm')
 plt.title("Simulación de conversiones de usuarios")
 plt.xlabel("Estrategia")
