@@ -28,12 +28,20 @@ strategies_selected_ts = []  # Thompson
 
 # Recompensa acumulada
 total_reward_rs = 0
-total_reward_ts = 0
+total_reward_ts = 0 
 
 # Contadores de recompensas para cada estrategia
 number_of_rewards_1 = [0] * d  # Veces que cada estrategia dio recompensa = 1
 number_of_rewards_0 = [0] * d  # Veces que dio recompensa = 0
 
+for n in range(0, N):
+    #Estrategia aleatoria 
+    strategy_rs = random.randrange(d)
+    strategies_selected_rs.append(strategy_rs)
+    reward_rs =X[n, strategy_rs]
+    total_reward_rs += reward_rs
+    for i in range(0, d):
+        random_beta = random.betavariate(number_of_rewards_1[i], number_of_rewards_0[i])
 
 plt.imshow(X, aspect='auto', cmap='coolwarm')
 plt.title("Simulación de conversiones de usuarios")
