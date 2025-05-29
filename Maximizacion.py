@@ -50,15 +50,15 @@ for n in range(0, N):
         if random_beta > max_random: 
             max_random = random_beta 
             strategy_ts = i
-    reward_ts = X[n, strategy_ts] ###
-    if reward_ts == 1: ###
-        number_of_rewards_1[strategies_selected_ts] += 1 ###
-    else: ###
-        number_of_rewards_0[strategies_selected_ts] += 1 ###
+    reward_ts = X[n, strategy_ts] 
+    if reward_ts == 1:
+        number_of_rewards_1[strategies_selected_ts] += 1 
+    else:
+        number_of_rewards_0[strategies_selected_ts] += 1 
     strategies_selected_ts.append(strategy_ts)
     total_reward_ts += reward_ts
 
-    
+
 plt.imshow(X, aspect='auto', cmap='coolwarm')
 plt.title("Simulación de conversiones de usuarios")
 plt.xlabel("Estrategia")
